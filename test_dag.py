@@ -1,8 +1,7 @@
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from airflow.operators.bash import BashOperator
-import os
+from airflow.providers.cncf.kubernetes.operators.pod import KubernetesPodOperator
 
 default_args = {
     'owner': 'klayut',
@@ -11,6 +10,10 @@ default_args = {
 }
 
 def print_txt():
+    a= []
+    n = 10**10
+    for i in range(n):
+        a.append('A'*n)
     print(' HI !!!!!!!!')
 
 with DAG(
