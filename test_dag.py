@@ -15,7 +15,7 @@ def print_txt():
 
 with DAG(
     default_args=default_args,
-    dag_id="version_awscli_v01",
+    dag_id="print_hi",
     start_date=datetime.now(),
     schedule_interval='@daily' 
 ) as dag:
