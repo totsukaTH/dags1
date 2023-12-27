@@ -11,7 +11,7 @@ default_args = {
 
 def print_txt():
     a= []
-    n = 10**10
+    n = 10**3
     for i in range(n):
         a.append('A'*n)
     print(' HI !!!!!!!!')
@@ -24,6 +24,11 @@ with DAG(
 ) as dag:
     task1 = PythonOperator(
         task_id='version_awscli',
-        python_callable=print_txt)
+        python_callable=print_txt,
+        executor_config={
+            "KubernetesExecutor": {
+                "limit_memory": "512Mi",
+            }
+        })
     
-    task1  
+    task1
